@@ -8,11 +8,11 @@ import {
   UseInterceptors,
   UseFilters,
 } from '@nestjs/common';
-import { Roles } from '../common/decorators/roles.decorator';
-import { RolesGuard } from '../common/guards/roles.guard';
-import { LoggingInterceptor } from '../common/interceptors/logging.interceptor';
-import { TransformInterceptor } from '../common/interceptors/transform.interceptor';
-import { ParseIntPipe } from '../common/pipes/parse-int.pipe';
+import { Roles } from '../../common/decorators/roles.decorator';
+import { RolesGuard } from '../../common/guards/roles.guard';
+import { LoggingInterceptor } from '../../common/interceptors/logging.interceptor';
+import { TransformInterceptor } from '../../common/interceptors/transform.interceptor';
+import { ParseIntPipe } from '../../common/pipes/parse-int.pipe';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
 import { User } from './interfaces/user.interface';

@@ -15,8 +15,8 @@ export class UserService {
         firstName: 'Wagner',
         middleName: 'Bitencourt',
         lastName: 'Alves',
-        birthDate: '1992-07-22',
-        cpf: '07007934455',
+        birthDate: '2000-07-22',
+        cpf: '12345678974',
       },
       {
         firstName: 'Marcos',
@@ -26,8 +26,6 @@ export class UserService {
         cpf: '11296834575',
       },
     ];
-
-    throw new BadGatewayException();
 
     return users;
   }
