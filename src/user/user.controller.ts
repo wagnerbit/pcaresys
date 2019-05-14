@@ -7,16 +7,18 @@ import {
   UseGuards,
   UseInterceptors,
   UseFilters,
+  UsePipes,
 } from '@nestjs/common';
-import { Roles } from '../../common/decorators/roles.decorator';
-import { RolesGuard } from '../../common/guards/roles.guard';
-import { LoggingInterceptor } from '../../common/interceptors/logging.interceptor';
-import { TransformInterceptor } from '../../common/interceptors/transform.interceptor';
-import { ParseIntPipe } from '../../common/pipes/parse-int.pipe';
+import { Roles } from '../infrastructure/decorators/roles.decorator';
+import { RolesGuard } from '../infrastructure/guards/roles.guard';
+import { LoggingInterceptor } from '../infrastructure/interceptors/logging.interceptor';
+import { TransformInterceptor } from '../infrastructure/interceptors/transform.interceptor';
+import { ParseIntPipe } from '../infrastructure/pipes/parse-int.pipe';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
 import { User } from './interfaces/user.interface';
-import { HttpExceptionFilter } from 'src/common/filters/http-exception.filter';
+import { HttpExceptionFilter } from '../infrastructure/filters/http-exception.filter';
+import { ValidationPipe } from '../infrastructure/pipes/validation.pipe';
 
 @Controller('user')
 @UseGuards(RolesGuard)
@@ -26,9 +28,11 @@ export class UserController {
 
   @Post()
   @UseFilters(new HttpExceptionFilter())
-  @Roles('admin')
+  @UsePipes(new ValidationPipe())
+  // @Roles('admin')
   async create(@Body() createUserDto: CreateUserDto) {
-    this.userService.create(createUserDto);
+    const response = await this.userService.create(createUserDto);
+    return response;
   }
 
   @Get()

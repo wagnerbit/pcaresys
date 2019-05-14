@@ -5,7 +5,7 @@
   "author": "Wagner Bitencourt",
   "license": "MIT",
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
     "start:dev": "nodemon",
@@ -16,7 +16,6 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
@@ -27,6 +26,9 @@
     "@nestjs/websockets": "6.2.0",
     "class-transformer": "0.2.2",
     "class-validator": "0.9.1",
+    "dotenv": "^8.0.0",
+    "log4js": "^4.2.0",
+    "moment": "^2.24.0",
     "reflect-metadata": "0.1.13",
     "rxjs": "6.5.2",
     "typescript": "3.4.5"
